@@ -163,11 +163,21 @@ img { max-width: 100%; }
 }
 
 .nav-logo {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  transition: filter var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+.nav-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 0 14px rgba(0, 212, 255, 0.7));
+  transform: scale(1.05);
 }
 
 .nav-logo span { color: var(--cyan); }
