@@ -1,0 +1,221 @@
+{
+  "personal": {
+    "name": "Rajat Ravindra Koorse",
+    "title": "AI-ML Engineer",
+    "subtitle": "GenAI • Multimodal Perception • Agentic Workflows",
+    "bio": "Over 2.5+ years of professional experience in developing scalable, high-performance AI-ML applications with a focus on GenAI and multimodal perception. Expertise in architecting LLM-driven pipelines, RAG-based architectures, and Agentic workflows. Skilled in deep learning-based perception modules for multi-modal sensor fusion (Camera, LiDAR, Radar).",
+    "location": "Bangalore, India",
+    "email": "rajatkoorse.rk@gmail.com",
+    "phone": "+91 8618908564",
+    "linkedin": "https://linkedin.com/in/rajatkoorse",
+    "github": "https://github.com/rajatkoorse",
+    "resumeUrl": "/Rajat Koorse_2.5_YOE_AIML.pdf",
+    "photoUrl": "",
+    "availableForWork": true,
+    "tagline": "Building intelligent systems at the intersection of GenAI and Autonomous Perception"
+  },
+  "experience": [
+    {
+      "id": "exp-001",
+      "company": "Tata Elxsi SI",
+      "role": "AI-ML Engineer",
+      "duration": "Mar 2024 – Present",
+      "location": "Bangalore, India",
+      "type": "Full-time",
+      "logo": "TE",
+      "color": "#00d4ff",
+      "projects": [
+        {
+          "name": "GenAI-Powered ADAS Scenario Intelligence Platform",
+          "bullets": [
+            "Led end-to-end development of a GenAI platform to automate critical ADAS scenario retrieval and scene understanding pipelines for autonomous validation.",
+            "Architected LLM-driven multimodal processing engines capable of digesting visual, textual, and tabular sensor data to extract behavioral patterns and edge cases.",
+            "Designed and deployed 20+ automated testing workflows using Agentic AI, accelerating validation timelines for Software-Defined Vehicle (SDV) modules by 40%.",
+            "Engineered production-ready microservices using Python and Flask to interface seamlessly with commercial LLM and vision APIs under high-concurrency constraints.",
+            "Conducted extensive model performance tuning and quantization techniques, driving down inference latency by 30% while retaining model evaluation accuracy.",
+            "Containerized application workflows using Docker and established scalable deployment patterns on AWS ECS, ensuring 99.9% pipeline availability."
+          ]
+        },
+        {
+          "name": "Intelligent Perception & Sensor Fusion Framework",
+          "bullets": [
+            "Engineered deep learning perception networks tailored for processing multi-modal sensor data streams (Camera, LiDAR, and Radar) to elevate environment mapping fidelity.",
+            "Constructed specialized synthetic data generation pipelines to dynamically generate rare target profiles and edge-case hazards, boosting model accuracy on unseen data by 25%.",
+            "Integrated a highly responsive RAG (Retrieval-Augmented Generation) infrastructure over enterprise vector databases, allowing internal teams to query dense sensor logs using natural language.",
+            "Developed and exposed customized REST APIs to handle high-throughput telemetry streams, enabling smooth integration with backend validation systems.",
+            "Implemented robust continuous validation logic to track model performance drift across recurring regression cycles, achieving an aggregate 95% bug-resolution rate prior to staging."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exp-002",
+      "company": "TecCera Innovations",
+      "role": "AI-ML Trainer",
+      "duration": "Jul 2023 – Mar 2024",
+      "location": "Bangalore, India",
+      "type": "Full-time",
+      "logo": "TC",
+      "color": "#7c3aed",
+      "projects": [
+        {
+          "name": "Technical Training & Mentorship",
+          "bullets": [
+            "Designed and delivered comprehensive, hands-on technical training curriculum covering core AI and Machine Learning paradigms utilizing Python, TensorFlow, and Keras.",
+            "Led deep-dive instructional sessions on classical ML algorithms, deep neural network architectures, computer vision basics, and NLP techniques.",
+            "Guided over 10+ end-to-end, real-world development projects, navigating teams through the entire engineering pipeline from EDA to production-grade model deployment.",
+            "Mentored software developers and engineering students on scalable AI architecture choices, data preprocessing strategies, hyperparameter tuning, and model evaluation metrics.",
+            "Evaluated student code and architectural designs, delivering constructive technical feedback to align academic projects with enterprise-level code quality standards."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exp-003",
+      "company": "Freelance",
+      "role": "Full Stack Developer",
+      "duration": "Jul 2020 – Mar 2024",
+      "location": "Remote",
+      "type": "Freelance",
+      "logo": "FS",
+      "color": "#10b981",
+      "projects": [
+        {
+          "name": "Client Projects",
+          "bullets": [
+            "Delivered 15+ full stack and backend-driven projects for clients across various industries.",
+            "Built scalable backend services, data pipelines, and API integrations.",
+            "Worked with technologies including Python, Java, PHP, MySQL, and various frontend frameworks."
+          ]
+        }
+      ]
+    }
+  ],
+  "skills": {
+    "languages": {
+      "label": "Programming Languages",
+      "icon": "code",
+      "items": ["Python", "Java", "SQL", "PHP", "JavaScript", "HTML/CSS"]
+    },
+    "ml": {
+      "label": "AI / Machine Learning",
+      "icon": "brain",
+      "items": [
+        "Deep Learning", "Neural Networks", "Computer Vision", "NLP",
+        "RAG Architecture", "LLM APIs", "Multimodal AI", "Agentic Workflows",
+        "Semantic Search", "Synthetic Data Generation", "Prompt Engineering",
+        "PyTorch", "TensorFlow", "LangChain", "Sensor Fusion"
+      ]
+    },
+    "tools": {
+      "label": "Tools & Platforms",
+      "icon": "tools",
+      "items": ["AWS (ECS)", "GCP", "Docker", "Flask", "FastAPI", "GitHub", "VS Code", "Tableau", "RStudio"]
+    },
+    "databases": {
+      "label": "Databases",
+      "icon": "database",
+      "items": ["MySQL", "MongoDB", "Vector Databases"]
+    }
+  },
+  "projects": [
+    {
+      "id": "proj-001",
+      "title": "Emotion-Based Book Recommendation System",
+      "description": "Developed a full-stack system using AI and machine learning to detect user emotions and personalize book recommendations in real-time.",
+      "tags": ["AI", "ML", "Full Stack", "Emotion Detection", "NLP"],
+      "github": "",
+      "demo": "",
+      "featured": true
+    },
+    {
+      "id": "proj-002",
+      "title": "MCE Staff Loan Management System",
+      "description": "Created a web application with AI-ML techniques in Java, PHP, and SQL to automate and streamline loan processing workflows for institutional staff.",
+      "tags": ["Java", "PHP", "SQL", "AI-ML", "Web App"],
+      "github": "",
+      "demo": "",
+      "featured": true
+    },
+    {
+      "id": "proj-003",
+      "title": "Virtual Health Assistant",
+      "description": "Collaborated on an application that offers personalized health insights using natural language processing and machine learning for real-time health advice and preventive care recommendations.",
+      "tags": ["NLP", "ML", "Health-Tech", "Python", "Chatbot"],
+      "github": "",
+      "demo": "",
+      "featured": true
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-001",
+      "degree": "MTech in Artificial Intelligence and Machine Learning",
+      "institution": "BITS Pilani",
+      "duration": "2025 – Present",
+      "status": "Ongoing",
+      "logo": "BITS"
+    },
+    {
+      "id": "edu-002",
+      "degree": "Bachelor of Engineering in Information Science and Engineering",
+      "institution": "Malnad College of Engineering",
+      "duration": "2019 – 2023",
+      "status": "Completed",
+      "logo": "MCE"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-001",
+      "title": "Python for Data Science",
+      "issuer": "NPTEL",
+      "year": "2022"
+    },
+    {
+      "id": "cert-002",
+      "title": "Cybersecurity Fundamentals",
+      "issuer": "LinkedIn Learning",
+      "year": "2022"
+    },
+    {
+      "id": "cert-003",
+      "title": "Data Streaming Engineer Certification",
+      "issuer": "Confluent",
+      "year": "2023"
+    },
+    {
+      "id": "cert-004",
+      "title": "Advanced Project Management Certificate",
+      "issuer": "Learntube.ai",
+      "year": "2023"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach-001",
+      "title": "Extra Mile Award",
+      "org": "Tata Elxsi Ltd",
+      "description": "Honored for relentless commitment, driving exceptional project delivery, and optimizing AI validation workflows within the Transportation Business Unit.",
+      "icon": "trophy"
+    },
+    {
+      "id": "ach-002",
+      "title": "Best Team of the Quarter",
+      "org": "Tata Elxsi Ltd",
+      "description": "Recognized alongside the ADAS Core Engineering group for successfully delivering the GenAI-driven scenario intelligence platform ahead of key client timelines.",
+      "icon": "users"
+    },
+    {
+      "id": "ach-003",
+      "title": "Technical Mentor Distinction – Best Instructor",
+      "org": "TecCera Innovations",
+      "description": "Awarded the 'Best Instructor' title for achieving a 95% milestone success rate across 10+ student-led machine learning deployment projects.",
+      "icon": "star"
+    }
+  ],
+  "meta": {
+    "lastUpdated": "2025-07-12",
+    "version": "1.0.0"
+  }
+}

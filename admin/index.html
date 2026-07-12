@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Rajat Koorse Portfolio</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<!-- ═══ LOGIN SCREEN ═══════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="icon"><i class="fas fa-shield-halved"></i></div>
+      <h1>Admin Panel</h1>
+      <p>Rajat Koorse · Portfolio CMS</p>
+    </div>
+    <div class="form-group">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" class="form-control" placeholder="Enter admin password" autocomplete="current-password" />
+    </div>
+    <div class="login-error" id="login-error">❌ Incorrect password. Please try again.</div>
+    <button class="btn btn-primary btn-full" id="login-btn" onclick="doLogin()">
+      <i class="fas fa-arrow-right-to-bracket"></i> Login
+    </button>
+    <p style="text-align:center; margin-top:16px; font-size:0.78rem; color:var(--text3)">
+      <a href="../" style="color:var(--text3)">← Back to Portfolio</a>
+    </p>
+  </div>
+</div>
+
+<!-- ═══ ADMIN APP ═══════════════════════════════════════════ -->
+<div id="admin-app">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><span>&lt;</span>RK<span>/&gt;</span> Admin</div>
+      <div class="sidebar-subtitle">Portfolio Content Manager</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Overview</div>
+      <button class="nav-item active" id="nav-dashboard" onclick="showSection('dashboard')">
+        <i class="fas fa-gauge-high"></i> Dashboard
+      </button>
+
+      <div class="sidebar-section-label">Portfolio Content</div>
+      <button class="nav-item" id="nav-personal" onclick="showSection('personal')">
+        <i class="fas fa-user"></i> Personal Info
+      </button>
+      <button class="nav-item" id="nav-experience" onclick="showSection('experience')">
+        <i class="fas fa-briefcase"></i> Experience
+      </button>
+      <button class="nav-item" id="nav-skills" onclick="showSection('skills')">
+        <i class="fas fa-code"></i> Skills
+      </button>
+      <button class="nav-item" id="nav-projects" onclick="showSection('projects')">
+        <i class="fas fa-folder-open"></i> Projects
+      </button>
+      <button class="nav-item" id="nav-education" onclick="showSection('education')">
+        <i class="fas fa-graduation-cap"></i> Education
+      </button>
+      <button class="nav-item" id="nav-certifications" onclick="showSection('certifications')">
+        <i class="fas fa-certificate"></i> Certifications
+      </button>
+      <button class="nav-item" id="nav-achievements" onclick="showSection('achievements')">
+        <i class="fas fa-trophy"></i> Achievements
+      </button>
+
+      <div class="sidebar-section-label">Notes</div>
+      <button class="nav-item" id="nav-notes" onclick="showSection('notes')">
+        <i class="fas fa-book-open"></i> Manage Notes
+      </button>
+
+      <div class="sidebar-section-label">Settings</div>
+      <button class="nav-item" id="nav-settings" onclick="showSection('settings')">
+        <i class="fas fa-gear"></i> GitHub Token
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="token-status" id="token-status-badge">
+        <span class="token-dot" id="token-dot"></span>
+        <span id="token-status-text">No token configured</span>
+      </div>
+      <button class="btn btn-danger btn-full btn-sm" onclick="doLogout()">
+        <i class="fas fa-arrow-right-from-bracket"></i> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Area -->
+  <div class="admin-main">
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-actions">
+        <div class="save-indicator" id="save-indicator">
+          <i class="fas fa-circle-notch fa-spin"></i> Saving…
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="window.open('../', '_blank')">
+          <i class="fas fa-eye"></i> View Site
+        </button>
+        <button class="btn btn-primary btn-sm" id="publish-btn" onclick="publishChanges()">
+          <i class="fas fa-cloud-arrow-up"></i> Publish
+        </button>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="admin-content">
+
+      <!-- ── Dashboard ── -->
+      <div class="admin-section active" id="section-dashboard">
+        <div class="section-heading">Dashboard</div>
+        <div class="section-desc">Welcome back, Rajat. Here's an overview of your portfolio content.</div>
+
+        <div class="dash-grid" id="dash-grid">
+          <div class="dash-stat"><div class="dash-stat-icon">💼</div><div class="dash-stat-num" id="dash-exp">0</div><div class="dash-stat-label">Experience Entries</div></div>
+          <div class="dash-stat"><div class="dash-stat-icon">🔧</div><div class="dash-stat-num" id="dash-skills">0</div><div class="dash-stat-label">Skills Listed</div></div>
+          <div class="dash-stat"><div class="dash-stat-icon">📁</div><div class="dash-stat-num" id="dash-proj">0</div><div class="dash-stat-label">Projects</div></div>
+          <div class="dash-stat"><div class="dash-stat-icon">🎓</div><div class="dash-stat-num" id="dash-edu">0</div><div class="dash-stat-label">Education</div></div>
+          <div class="dash-stat"><div class="dash-stat-icon">📜</div><div class="dash-stat-num" id="dash-cert">0</div><div class="dash-stat-label">Certifications</div></div>
+          <div class="dash-stat"><div class="dash-stat-icon">📓</div><div class="dash-stat-num" id="dash-notes">0</div><div class="dash-stat-label">Notes</div></div>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:20px; margin-bottom:20px;">
+          <div style="font-weight:600; margin-bottom:8px">⚡ Quick Tips</div>
+          <ul style="font-size:0.84rem; color:var(--text2); list-style:disc; padding-left:20px; line-height:2;">
+            <li>Edit any section from the sidebar, then click <strong>Publish</strong> to push changes live.</li>
+            <li>Changes are saved to your GitHub repo via the API — configure your token in <strong>Settings</strong> first.</li>
+            <li>Notes can be marked <strong>private</strong> — only visible when logged in as admin.</li>
+            <li>Your portfolio auto-refreshes content from <code>data/portfolio.json</code>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Personal Info ── -->
+      <div class="admin-section" id="section-personal">
+        <div class="section-heading">Personal Information</div>
+        <div class="section-desc">Manage your basic profile details shown in the hero and contact sections.</div>
+
+        <div class="form-row">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="p-name" placeholder="Rajat Ravindra Koorse" />
+          </div>
+          <div class="field">
+            <label>Job Title</label>
+            <input type="text" id="p-title" placeholder="AI-ML Engineer" />
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label>Subtitle / Specializations</label>
+            <input type="text" id="p-subtitle" placeholder="GenAI • Multimodal Perception • Agentic Workflows" />
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label>Bio / Professional Summary</label>
+            <textarea id="p-bio" rows="5" placeholder="Write your professional bio here..."></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Location</label>
+            <input type="text" id="p-location" placeholder="Bangalore, India" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="p-email" placeholder="rajatkoorse.rk@gmail.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Phone</label>
+            <input type="tel" id="p-phone" placeholder="+91 8618908564" />
+          </div>
+          <div class="field">
+            <label>LinkedIn URL</label>
+            <input type="url" id="p-linkedin" placeholder="https://linkedin.com/in/rajatkoorse" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>GitHub URL</label>
+            <input type="url" id="p-github" placeholder="https://github.com/rajatkoorse" />
+          </div>
+          <div class="field">
+            <label>Resume/CV File URL</label>
+            <input type="text" id="p-resume" placeholder="/Rajat Koorse_2.5_YOE_AIML.pdf" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Profile Photo URL (optional)</label>
+            <input type="url" id="p-photo" placeholder="https://..." />
+          </div>
+          <div class="field">
+            <label>Tagline</label>
+            <input type="text" id="p-tagline" placeholder="Building intelligent systems..." />
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-size:0.84rem; color:var(--text2);">
+            <input type="checkbox" id="p-available" style="width:16px; height:16px; accent-color:var(--cyan);" />
+            Show "Available for opportunities" badge
+          </label>
+        </div>
+
+        <div style="margin-top:24px; display:flex; gap:12px;">
+          <button class="btn btn-primary" onclick="savePersonal()"><i class="fas fa-save"></i> Save Personal Info</button>
+        </div>
+      </div>
+
+      <!-- ── Experience ── -->
+      <div class="admin-section" id="section-experience">
+        <div class="section-heading">Work Experience</div>
+        <div class="section-desc">Add, edit, or remove your professional experience entries.</div>
+        <div class="item-list" id="exp-list"></div>
+        <button class="btn btn-secondary" onclick="addExperience()">
+          <i class="fas fa-plus"></i> Add Experience
+        </button>
+      </div>
+
+      <!-- ── Skills ── -->
+      <div class="admin-section" id="section-skills">
+        <div class="section-heading">Technical Skills</div>
+        <div class="section-desc">Manage skill categories and individual skills.</div>
+        <div class="item-list" id="skills-list"></div>
+        <button class="btn btn-secondary" onclick="addSkillCategory()">
+          <i class="fas fa-plus"></i> Add Category
+        </button>
+      </div>
+
+      <!-- ── Projects ── -->
+      <div class="admin-section" id="section-projects">
+        <div class="section-heading">Projects</div>
+        <div class="section-desc">Showcase your personal and professional projects.</div>
+        <div class="item-list" id="projects-list"></div>
+        <button class="btn btn-secondary" onclick="addProject()">
+          <i class="fas fa-plus"></i> Add Project
+        </button>
+      </div>
+
+      <!-- ── Education ── -->
+      <div class="admin-section" id="section-education">
+        <div class="section-heading">Education</div>
+        <div class="section-desc">Manage your academic credentials.</div>
+        <div class="item-list" id="edu-list"></div>
+        <button class="btn btn-secondary" onclick="addEducation()">
+          <i class="fas fa-plus"></i> Add Education
+        </button>
+      </div>
+
+      <!-- ── Certifications ── -->
+      <div class="admin-section" id="section-certifications">
+        <div class="section-heading">Certifications</div>
+        <div class="section-desc">List your professional certifications and courses.</div>
+        <div class="item-list" id="certs-list"></div>
+        <button class="btn btn-secondary" onclick="addCertification()">
+          <i class="fas fa-plus"></i> Add Certification
+        </button>
+      </div>
+
+      <!-- ── Achievements ── -->
+      <div class="admin-section" id="section-achievements">
+        <div class="section-heading">Achievements</div>
+        <div class="section-desc">Highlight your awards and recognitions.</div>
+        <div class="item-list" id="ach-list"></div>
+        <button class="btn btn-secondary" onclick="addAchievement()">
+          <i class="fas fa-plus"></i> Add Achievement
+        </button>
+      </div>
+
+      <!-- ── Notes ── -->
+      <div class="admin-section" id="section-notes">
+        <div class="section-heading">Personal Notes</div>
+        <div class="section-desc">Create and manage your personal notes. Private notes are only visible when logged in.</div>
+        <div style="margin-bottom:16px;">
+          <button class="btn btn-primary" onclick="createNote()">
+            <i class="fas fa-plus"></i> New Note
+          </button>
+        </div>
+        <div class="item-list" id="notes-list">
+          <div style="color:var(--text3); font-size:0.84rem; padding:20px 0;">Loading notes...</div>
+        </div>
+      </div>
+
+      <!-- ── Settings ── -->
+      <div class="admin-section" id="section-settings">
+        <div class="section-heading">GitHub Token Setup</div>
+        <div class="section-desc">Connect to GitHub API to save your changes directly to your repository.</div>
+
+        <div class="token-form">
+          <div style="font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+            <i class="fab fa-github"></i> Setup Instructions
+          </div>
+          <div class="token-steps">
+            <div class="token-step">
+              <div class="step-num">1</div>
+              <div class="step-text">Go to <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a> (Classic Tokens)</div>
+            </div>
+            <div class="token-step">
+              <div class="step-num">2</div>
+              <div class="step-text">Set a note (e.g. <code>portfolio-cms</code>), expiration = <code>No expiration</code></div>
+            </div>
+            <div class="token-step">
+              <div class="step-num">3</div>
+              <div class="step-text">Check <code>repo</code> scope (full repository access). Click <strong>Generate token</strong>.</div>
+            </div>
+            <div class="token-step">
+              <div class="step-num">4</div>
+              <div class="step-text">Copy the token and paste it below. It's stored only in your browser's localStorage — never uploaded.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label>GitHub Username</label>
+            <input type="text" id="gh-username" placeholder="rajatkoorse" />
+          </div>
+          <div class="field">
+            <label>Repository Name</label>
+            <input type="text" id="gh-repo" placeholder="rajatkoorse.github.io" />
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label>Personal Access Token (PAT)</label>
+            <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <button class="btn btn-primary" onclick="saveGitHubToken()">
+            <i class="fas fa-save"></i> Save Token
+          </button>
+          <button class="btn btn-secondary" onclick="testGitHubToken()">
+            <i class="fas fa-vial"></i> Test Connection
+          </button>
+          <button class="btn btn-danger" onclick="clearToken()">
+            <i class="fas fa-trash"></i> Clear Token
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-main -->
+</div><!-- /admin-app -->
+
+<!-- Toast Container -->
+<div id="toast"></div>
+
+<!-- Note Editor Modal -->
+<div id="note-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1000; padding:20px; overflow-y:auto;">
+  <div style="max-width:800px; margin:0 auto; background:var(--bg2); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
+    <div style="padding:20px 24px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-weight:700; font-size:1.1rem">📝 Note Editor</div>
+      <button class="btn btn-secondary btn-sm" onclick="closeNoteModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div style="padding:24px;">
+      <div class="form-row">
+        <div class="field">
+          <label>Title</label>
+          <input type="text" id="note-title" placeholder="Note title..." />
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <input type="text" id="note-category" placeholder="e.g., AI/ML, Personal, Tech..." />
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="field">
+          <label>Tags (comma-separated)</label>
+          <input type="text" id="note-tags-input" placeholder="python, machine-learning, notes" />
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="field">
+          <label>Content (Markdown supported)</label>
+          <textarea id="note-content" style="min-height:300px; font-family:var(--mono); font-size:0.84rem;" placeholder="# Note Title&#10;&#10;Write your note here using **Markdown**..."></textarea>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.84rem; color:var(--text2);">
+          <input type="checkbox" id="note-public" style="accent-color:var(--cyan);" />
+          Make this note public (visible on /notes/ without login)
+        </label>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-secondary" onclick="closeNoteModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="saveNote()"><i class="fas fa-save"></i> Save Note</button>
+        </div>
+      </div>
+      <input type="hidden" id="note-id" />
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

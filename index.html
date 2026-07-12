@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajat Koorse — AI-ML Engineer</title>
+  <meta name="description" content="Rajat Ravindra Koorse — AI-ML Engineer specializing in GenAI, Multimodal Perception, LLM-driven pipelines, and Agentic workflows. 2.5+ years at Tata Elxsi SI." />
+  <meta name="keywords" content="AI ML Engineer, GenAI, LLM, RAG, ADAS, Multimodal AI, Python, Deep Learning, Rajat Koorse" />
+  <meta name="author" content="Rajat Ravindra Koorse" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rajat Koorse — AI-ML Engineer" />
+  <meta property="og:description" content="AI-ML Engineer specializing in GenAI, Multimodal Perception, and Agentic workflows." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rajatkoorse.github.io/" />
+
+  <!-- Icons -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Neural Network Particle Background -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo" id="nav-logo-link">
+      <span>&lt;</span>RK<span>/&gt;</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="notes/" class="nav-cta"><i class="fas fa-book-open"></i> Notes</a></li>
+    </ul>
+    <div class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <!-- Left: Text -->
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span id="hero-badge-text">Available for opportunities</span>
+        </div>
+        <h1 class="hero-name" id="hero-name">Rajat Koorse</h1>
+        <p class="hero-title">
+          <span id="typed-text"></span><span class="cursor"></span>
+        </p>
+        <p class="hero-desc" id="hero-desc">
+          Loading...
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" id="hero-cta-contact">
+            <i class="fas fa-paper-plane"></i> Get in Touch
+          </a>
+          <a href="#" class="btn btn-outline" id="hero-cta-cv" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <a href="#experience" class="btn btn-outline">
+            <i class="fas fa-briefcase"></i> View Work
+          </a>
+        </div>
+        <div class="hero-stats" id="hero-stats">
+          <div class="stat">
+            <div class="stat-number">2.5+</div>
+            <div class="stat-label">Years Exp.</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Workflows Built</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">40%</div>
+            <div class="stat-label">Latency Reduced</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Avatar -->
+      <div class="hero-avatar-wrap">
+        <div class="hero-avatar-ring">
+          <div class="hero-avatar" id="hero-avatar">
+            <span id="hero-avatar-initials">RK</span>
+          </div>
+        </div>
+        <div class="hero-social" id="hero-social">
+          <a href="#" class="social-link" id="social-linkedin" target="_blank" rel="noopener" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link" id="social-github" target="_blank" rel="noopener" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link" id="social-email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="admin/" class="social-link" title="Admin Panel">
+            <i class="fas fa-lock"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">01. About Me</span>
+      <h2 class="section-title gradient-text">Who I Am</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal" id="about-card-bio">
+        <p style="font-size:1.0rem; line-height:1.8; color:var(--text-secondary);" id="about-bio">Loading...</p>
+        <div class="about-tag-cloud" id="about-tags"></div>
+      </div>
+      <ul class="about-info-list reveal" id="about-info-list">
+        <!-- Rendered by JS -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     EXPERIENCE SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">02. Experience</span>
+      <h2 class="section-title gradient-text">Work History</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="timeline" id="experience-timeline">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SKILLS SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">03. Technical Skills</span>
+      <h2 class="section-title gradient-text">What I Work With</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PROJECTS SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">04. Projects</span>
+      <h2 class="section-title gradient-text">Things I've Built</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     EDUCATION SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">05. Education</span>
+      <h2 class="section-title gradient-text">Academic Background</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="education-grid" id="education-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CERTIFICATIONS SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section" id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">06. Certifications</span>
+      <h2 class="section-title gradient-text">Credentials</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="certs-grid" id="certs-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ACHIEVEMENTS SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="achievements">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">07. Achievements</span>
+      <h2 class="section-title gradient-text">Recognition</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="achievements-grid" id="achievements-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CONTACT SECTION
+════════════════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="reveal">
+        <span class="section-label">08. Contact</span>
+        <h2 class="section-title gradient-text">Let's Connect</h2>
+        <div class="divider" style="margin: 16px auto;"></div>
+        <p class="contact-tagline" id="contact-tagline">
+          I'm always open to interesting conversations, collaboration, or just a good tech chat.
+          Reach out through any of the channels below!
+        </p>
+      </div>
+      <div class="contact-links reveal" id="contact-links">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>Built with ❤️ by <a href="#hero" id="footer-name-link">Rajat Koorse</a> · Hosted on GitHub Pages</p>
+    <p style="margin-top:6px; font-size:0.75rem; color:var(--text-muted);">
+      <a href="admin/" style="color:var(--text-muted); opacity:0.5;">⚙ Admin</a>
+      &nbsp;·&nbsp;
+      <a href="notes/" style="color:var(--text-muted); opacity:0.5;">📓 Notes</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/particles.js"></script>
+<script src="assets/js/portfolio.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Rajat Koorse</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap" />
+  <style>
+    :root { --cyan: #00d4ff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #020b18;
+      color: #e8f4f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .wrapper { max-width: 480px; }
+    .glitch {
+      font-size: 8rem;
+      font-weight: 800;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 24px;
+      text-shadow: 0 0 40px rgba(0,212,255,0.4);
+      animation: flicker 4s ease-in-out infinite;
+    }
+    @keyframes flicker {
+      0%, 95%, 100% { opacity: 1; }
+      96% { opacity: 0.4; }
+      97% { opacity: 1; }
+      98% { opacity: 0.2; }
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 12px; }
+    p { color: #94a3b8; margin-bottom: 32px; line-height: 1.6; }
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #00d4ff, #0090c8);
+      color: #020b18;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .home-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.3); }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="glitch">404</div>
+    <h1>Page Not Found</h1>
+    <p>Looks like this neural path doesn't exist. The page you're looking for may have been moved or deleted.</p>
+    <a href="/" class="home-btn">← Back to Portfolio</a>
+  </div>
+</body>
+</html>
