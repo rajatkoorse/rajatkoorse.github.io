@@ -273,10 +273,22 @@
       "Agentic Workflow Engineer"
     ],
     "stats": [
-      { "number": "2.5+", "label": "Years Exp." },
-      { "number": "20+",  "label": "Workflows Built" },
-      { "number": "40%",  "label": "Latency Reduced" },
-      { "number": "15+",  "label": "Projects" }
+      {
+        "number": "2.5+",
+        "label": "Years Exp."
+      },
+      {
+        "number": "20+",
+        "label": "Workflows Built"
+      },
+      {
+        "number": "40%",
+        "label": "Latency Reduced"
+      },
+      {
+        "number": "15+",
+        "label": "Projects"
+      }
     ]
   },
   "meta": {
