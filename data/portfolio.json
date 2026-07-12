@@ -3,7 +3,7 @@
     "name": "Rajat Ravindra Koorse",
     "title": "AI-ML Engineer",
     "subtitle": "GenAI • Multimodal Perception • Agentic Workflows",
-    "bio": "Over 2.5+ years of professional experience in developing scalable, high-performance AI-ML applications with a focus on GenAI and multimodal perception. Expertise in architecting LLM-driven pipelines, RAG-based architectures, and Agentic workflows. Skilled in deep learning-based perception modules for multi-modal sensor fusion (Camera, LiDAR, Radar).",
+    "bio": "Over 3+ years of professional experience in developing scalable, high-performance AI-ML applications with a focus on GenAI and multimodal perception. Expertise in architecting LLM-driven pipelines, RAG-based architectures, and Agentic workflows. Skilled in deep learning-based perception modules for multi-modal sensor fusion (Camera, LiDAR, Radar).",
     "location": "Bangalore, India",
     "email": "rajatkoorse.rk@gmail.com",
     "phone": "+91 8618908564",
@@ -17,7 +17,7 @@
   "experience": [
     {
       "id": "exp-001",
-      "company": "Tata Elxsi SI",
+      "company": "Tata Elxsi Ltd",
       "role": "AI-ML Engineer",
       "duration": "Mar 2024 – Present",
       "location": "Bangalore, India",
@@ -95,27 +95,59 @@
     "languages": {
       "label": "Programming Languages",
       "icon": "code",
-      "items": ["Python", "Java", "SQL", "PHP", "JavaScript", "HTML/CSS"]
+      "items": [
+        "Python",
+        "Java",
+        "SQL",
+        "PHP",
+        "JavaScript",
+        "HTML/CSS"
+      ]
     },
     "ml": {
       "label": "AI / Machine Learning",
       "icon": "brain",
       "items": [
-        "Deep Learning", "Neural Networks", "Computer Vision", "NLP",
-        "RAG Architecture", "LLM APIs", "Multimodal AI", "Agentic Workflows",
-        "Semantic Search", "Synthetic Data Generation", "Prompt Engineering",
-        "PyTorch", "TensorFlow", "LangChain", "Sensor Fusion"
+        "Deep Learning",
+        "Neural Networks",
+        "Computer Vision",
+        "NLP",
+        "RAG Architecture",
+        "LLM APIs",
+        "Multimodal AI",
+        "Agentic Workflows",
+        "Semantic Search",
+        "Synthetic Data Generation",
+        "Prompt Engineering",
+        "PyTorch",
+        "TensorFlow",
+        "LangChain",
+        "Sensor Fusion"
       ]
     },
     "tools": {
       "label": "Tools & Platforms",
       "icon": "tools",
-      "items": ["AWS (ECS)", "GCP", "Docker", "Flask", "FastAPI", "GitHub", "VS Code", "Tableau", "RStudio"]
+      "items": [
+        "AWS (ECS)",
+        "GCP",
+        "Docker",
+        "Flask",
+        "FastAPI",
+        "GitHub",
+        "VS Code",
+        "Tableau",
+        "RStudio"
+      ]
     },
     "databases": {
       "label": "Databases",
       "icon": "database",
-      "items": ["MySQL", "MongoDB", "Vector Databases"]
+      "items": [
+        "MySQL",
+        "MongoDB",
+        "Vector Databases"
+      ]
     }
   },
   "projects": [
@@ -123,7 +155,13 @@
       "id": "proj-001",
       "title": "Emotion-Based Book Recommendation System",
       "description": "Developed a full-stack system using AI and machine learning to detect user emotions and personalize book recommendations in real-time.",
-      "tags": ["AI", "ML", "Full Stack", "Emotion Detection", "NLP"],
+      "tags": [
+        "AI",
+        "ML",
+        "Full Stack",
+        "Emotion Detection",
+        "NLP"
+      ],
       "github": "",
       "demo": "",
       "featured": true
@@ -132,7 +170,13 @@
       "id": "proj-002",
       "title": "MCE Staff Loan Management System",
       "description": "Created a web application with AI-ML techniques in Java, PHP, and SQL to automate and streamline loan processing workflows for institutional staff.",
-      "tags": ["Java", "PHP", "SQL", "AI-ML", "Web App"],
+      "tags": [
+        "Java",
+        "PHP",
+        "SQL",
+        "AI-ML",
+        "Web App"
+      ],
       "github": "",
       "demo": "",
       "featured": true
@@ -141,7 +185,13 @@
       "id": "proj-003",
       "title": "Virtual Health Assistant",
       "description": "Collaborated on an application that offers personalized health insights using natural language processing and machine learning for real-time health advice and preventive care recommendations.",
-      "tags": ["NLP", "ML", "Health-Tech", "Python", "Chatbot"],
+      "tags": [
+        "NLP",
+        "ML",
+        "Health-Tech",
+        "Python",
+        "Chatbot"
+      ],
       "github": "",
       "demo": "",
       "featured": true
