@@ -2,6 +2,7 @@
 
 > A fully interactive portfolio website with a dynamic CMS admin panel and personal notes section.
 > Live at: **https://rajatkoorse.github.io/**
+> GitHub: **https://github.com/rajatkoorse/rajatkoorse.github.io**
 
 ---
 
@@ -42,11 +43,10 @@ rajatkoorse.github.io/
 
 ### Step 1: Push to GitHub
 ```bash
-git init
 git add .
 git commit -m "Initial portfolio setup"
 git branch -M main
-git remote add origin https://github.com/rajatkoorse/rajatkoorse.github.io.git
+git remote set-url origin https://github.com/rajatkoorse/rajatkoorse.github.io.git
 git push -u origin main
 ```
 
