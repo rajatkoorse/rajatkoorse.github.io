@@ -50,6 +50,9 @@
       </button>
 
       <div class="sidebar-section-label">Portfolio Content</div>
+      <button class="nav-item" id="nav-hero" onclick="showSection('hero')">
+        <i class="fas fa-wand-magic-sparkles"></i> Hero / Stats
+      </button>
       <button class="nav-item" id="nav-personal" onclick="showSection('personal')">
         <i class="fas fa-user"></i> Personal Info
       </button>
@@ -140,7 +143,34 @@
         </div>
       </div>
 
+      <!-- ── Hero / Stats ── -->
+      <div class="admin-section" id="section-hero">
+        <div class="section-heading">Hero Section &amp; Stats</div>
+        <div class="section-desc">Edit the typing animation strings and the 4 stat numbers shown on the hero banner.</div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:24px; margin-bottom:24px;">
+          <div style="font-weight:600; margin-bottom:16px; color:var(--cyan)"><i class="fas fa-keyboard" style="margin-right:8px"></i>Typed Animation Strings</div>
+          <div class="section-desc" style="margin-bottom:16px;">These cycle through one by one in the hero. One per line.</div>
+          <div class="field">
+            <label>Typing Strings (one per line)</label>
+            <textarea id="hero-typed" rows="7" style="font-family:var(--mono); font-size:0.84rem;" placeholder="AI-ML Engineer&#10;GenAI Architect&#10;LLM Pipeline Builder"></textarea>
+          </div>
+        </div>
+
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:24px; margin-bottom:24px;">
+          <div style="font-weight:600; margin-bottom:16px; color:var(--cyan)"><i class="fas fa-chart-bar" style="margin-right:8px"></i>Hero Stats</div>
+          <div class="section-desc" style="margin-bottom:16px;">The 4 numbers shown below the hero buttons (e.g. "2.5+ Years Exp.").</div>
+          <div id="hero-stats-list" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;"></div>
+          <button class="btn btn-secondary btn-sm" style="margin-top:12px" onclick="addHeroStat()">
+            <i class="fas fa-plus"></i> Add Stat
+          </button>
+        </div>
+
+        <button class="btn btn-primary" onclick="saveHero()"><i class="fas fa-save"></i> Save Hero Config</button>
+      </div>
+
       <!-- ── Personal Info ── -->
+
       <div class="admin-section" id="section-personal">
         <div class="section-heading">Personal Information</div>
         <div class="section-desc">Manage your basic profile details shown in the hero and contact sections.</div>

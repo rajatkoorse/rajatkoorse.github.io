@@ -12,22 +12,81 @@
 </head>
 <body>
 
-<!-- ── Login Gate (for private notes) ── -->
+<!-- ── Admin Password Gate (for private notes) ── -->
 <div id="notes-login-gate">
   <div class="gate-card">
     <div class="gate-icon">🔐</div>
-    <div class="gate-title">Private Note</div>
-    <div class="gate-sub" id="gate-sub-text">Enter admin password to view this note.</div>
-    <input type="password" id="gate-password" class="gate-input" placeholder="Admin password..." />
+    <div class="gate-title">Authentication Required</div>
+    <div class="gate-sub" id="gate-sub-text">Enter admin password to continue.</div>
+    <input type="password" id="gate-password" class="gate-input" placeholder="Admin password..." autocomplete="current-password" />
     <button class="gate-btn" onclick="gateLogin()">Unlock</button>
-    <div class="gate-error" id="gate-error">Incorrect password</div>
+    <div class="gate-error" id="gate-error">Incorrect password. Try again.</div>
     <div class="gate-dismiss">
-      <a href="#" onclick="closeGate(); return false;">← Go back</a>
+      <a href="#" onclick="closeGate(); return false;">← Cancel</a>
     </div>
   </div>
 </div>
 
-<!-- ── Top Bar ── -->
+<!-- ══════════════════════════════════════════════════
+     NOTE EDITOR PANEL (slide-in, no login needed)
+═══════════════════════════════════════════════════ -->
+<div id="note-editor-panel">
+  <div class="editor-header">
+    <div style="font-size:1rem; font-weight:700;">
+      <i class="fas fa-pen-to-square" style="color:var(--cyan); margin-right:8px;"></i>
+      <span id="editor-heading">New Note</span>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <!-- Privacy Toggle -->
+      <label class="privacy-toggle" title="Toggle public/private">
+        <input type="checkbox" id="editor-public" checked />
+        <span class="privacy-slider">
+          <span class="privacy-label-public"><i class="fas fa-globe"></i> Public</span>
+          <span class="privacy-label-private"><i class="fas fa-lock"></i> Private</span>
+        </span>
+      </label>
+      <button class="btn btn-ghost btn-sm" onclick="closeEditor()"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <div class="editor-body">
+    <input type="hidden" id="editor-id" />
+    <div class="editor-field">
+      <input type="text" id="editor-title" placeholder="Note title..." class="editor-title-input" />
+    </div>
+    <div class="editor-field editor-row">
+      <input type="text" id="editor-category" placeholder="Category (e.g. AI/ML, Personal...)" class="editor-meta-input" />
+      <input type="text" id="editor-tags" placeholder="Tags: python, ml, notes..." class="editor-meta-input" />
+    </div>
+    <textarea id="editor-content" class="editor-textarea" placeholder="Write your note here...&#10;&#10;Supports **Markdown** formatting:&#10;# Headings, **bold**, *italic*, \`code\`, lists, etc."></textarea>
+    <div class="editor-hint">
+      <i class="fas fa-info-circle"></i>
+      Private notes are <strong>encrypted end-to-end</strong> before uploading — unreadable in the public GitHub repo.
+      Local drafts stay on this device only.
+    </div>
+  </div>
+
+  <div class="editor-footer">
+    <div class="privacy-info" id="privacy-info">
+      <i class="fas fa-globe" id="privacy-icon"></i>
+      <span id="privacy-label-text">Public — visible to anyone</span>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-ghost btn-sm" onclick="saveNote('local')" title="Save only on this device">
+        <i class="fas fa-device-mobile-alt"></i> Save Locally
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="saveNote('github')" title="Save to GitHub">
+        <i class="fab fa-github"></i> Save to GitHub
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Editor overlay -->
+<div id="editor-overlay" onclick="closeEditor()"></div>
+
+<!-- ══════════════════════════════════════════════════
+     TOP BAR
+═══════════════════════════════════════════════════ -->
 <header class="notes-topbar">
   <div class="topbar-left">
     <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
@@ -37,27 +96,32 @@
     <span id="admin-badge" style="display:none; font-size:0.75rem; color:var(--cyan); background:var(--cyan-dim); border:1px solid rgba(0,212,255,0.25); padding:4px 12px; border-radius:999px;">
       <i class="fas fa-shield-halved"></i> Admin Mode
     </span>
-    <button class="btn btn-ghost btn-sm" id="admin-login-btn" onclick="showGate('admin')" title="Admin Login">
+    <button class="btn btn-primary btn-sm" onclick="openEditor(null)">
+      <i class="fas fa-plus"></i> New Note
+    </button>
+    <button class="btn btn-ghost btn-sm" id="admin-login-btn" onclick="showGate()" title="Admin Login">
       <i class="fas fa-lock"></i>
     </button>
     <button class="btn btn-ghost btn-sm" id="admin-logout-btn" onclick="doAdminLogout()" style="display:none;" title="Logout">
-      <i class="fas fa-lock-open"></i>
+      <i class="fas fa-lock-open"></i> Logout
     </button>
   </div>
 </header>
 
-<!-- ── Layout ── -->
+<!-- ══════════════════════════════════════════════════
+     LAYOUT
+═══════════════════════════════════════════════════ -->
 <div class="notes-layout">
 
   <!-- Sidebar -->
   <aside class="notes-sidebar">
-    <div class="sidebar-title">Notes</div>
+    <div class="sidebar-title">All Notes</div>
     <div class="search-box">
       <i class="fas fa-search"></i>
       <input type="text" id="search-input" placeholder="Search notes..." oninput="filterNotes(this.value)" />
     </div>
     <div id="note-list-sidebar">
-      <div class="note-list-empty">Loading notes...</div>
+      <div class="note-list-empty">Loading...</div>
     </div>
   </aside>
 
@@ -67,10 +131,13 @@
     <!-- Home / Grid View -->
     <div id="notes-home-view" class="notes-home">
       <h1>My Notes</h1>
-      <p>Personal notes, learnings, and writings. Some are public, some are private.</p>
+      <p>Personal notes, learnings, and writings. <strong>+ New Note</strong> is always available — no login needed.</p>
+      <p style="font-size:0.82rem; color:var(--text3); margin-top:6px;">
+        <i class="fas fa-lock" style="margin-right:4px; color:var(--cyan)"></i>Private notes are encrypted before upload — safe in a public repo.
+        <i class="fas fa-mobile-alt" style="margin-left:12px; margin-right:4px; color:var(--amber)"></i>Local drafts stay on this device only.
+      </p>
 
       <div class="tags-filter" id="tags-filter"></div>
-
       <div class="notes-cards" id="notes-cards">
         <div style="color:var(--text3); font-size:0.9rem; padding:20px 0;">Loading notes...</div>
       </div>
@@ -78,9 +145,17 @@
 
     <!-- Note Reader -->
     <div id="note-reader" class="note-reader">
-      <button class="reader-back" onclick="backToHome()">
-        <i class="fas fa-arrow-left"></i> Back to Notes
-      </button>
+      <div style="display:flex; gap:10px; margin-bottom:24px; align-items:center;">
+        <button class="reader-back" onclick="backToHome()">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button class="btn btn-ghost btn-sm" id="reader-edit-btn" style="display:none;" onclick="openEditor(currentNote?.id)">
+          <i class="fas fa-pen"></i> Edit
+        </button>
+        <button class="btn btn-danger btn-sm" id="reader-delete-btn" style="display:none;" onclick="deleteNote(currentNote?.id)">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
       <div class="reader-header">
         <h1 class="reader-title" id="reader-title"></h1>
         <div class="reader-meta" id="reader-meta"></div>
@@ -92,8 +167,41 @@
   </main>
 </div>
 
-<!-- marked.js for Markdown rendering -->
+<!-- marked.js -->
 <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
 <script src="notes.js"></script>
+<script>
+  // Wire up the privacy toggle UI
+  document.getElementById('editor-public').addEventListener('change', function() {
+    const icon  = document.getElementById('privacy-icon');
+    const label = document.getElementById('privacy-label-text');
+    if (this.checked) {
+      icon.className  = 'fas fa-globe';
+      label.textContent = 'Public — visible to anyone';
+      icon.style.color = 'var(--green)';
+    } else {
+      icon.className  = 'fas fa-lock';
+      label.textContent = 'Private — encrypted, admin-only';
+      icon.style.color = 'var(--cyan)';
+    }
+  });
+
+  // Store currentNote reference for reader buttons
+  const _origOpenNote = openNote;
+  window.openNote = async function(id) {
+    const ghN  = githubNotes.find(n => n.id === id);
+    const lcN  = localNotes.find(n => n.id === id);
+    window.currentNote = { id, src: ghN ? 'github' : 'local' };
+
+    const delBtn  = document.getElementById('reader-delete-btn');
+    const editBtn = document.getElementById('reader-edit-btn');
+    if (delBtn)  delBtn.style.display  = (isAdmin || !!lcN) ? 'inline-flex' : 'none';
+    if (editBtn) editBtn.style.display = (isAdmin || !!lcN) ? 'inline-flex' : 'none';
+    if (editBtn) editBtn.onclick = () => openEditor(id);
+    if (delBtn)  delBtn.onclick  = () => deleteNote(id);
+
+    await _origOpenNote(id);
+  };
+</script>
 </body>
 </html>

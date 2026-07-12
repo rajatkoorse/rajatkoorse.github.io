@@ -264,6 +264,21 @@
       "icon": "star"
     }
   ],
+  "hero": {
+    "typedStrings": [
+      "AI-ML Engineer",
+      "GenAI Architect",
+      "LLM Pipeline Builder",
+      "Multimodal AI Specialist",
+      "Agentic Workflow Engineer"
+    ],
+    "stats": [
+      { "number": "2.5+", "label": "Years Exp." },
+      { "number": "20+",  "label": "Workflows Built" },
+      { "number": "40%",  "label": "Latency Reduced" },
+      { "number": "15+",  "label": "Projects" }
+    ]
+  },
   "meta": {
     "lastUpdated": "2025-07-12",
     "version": "1.0.0"

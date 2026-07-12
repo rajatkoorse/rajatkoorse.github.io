@@ -4,9 +4,8 @@
  */
 'use strict';
 
-// ── Constants ──────────────────────────────────────────────
-const DATA_URL = 'data/portfolio.json';
-const TYPED_STRINGS = [
+// ── Constants (defaults — overridden by portfolio.json) ────
+let TYPED_STRINGS = [
   'AI-ML Engineer',
   'GenAI Architect',
   'LLM Pipeline Builder',
@@ -32,13 +31,14 @@ const SKILL_ICONS = {
 
 // ── State ───────────────────────────────────────────────────
 let portfolioData = null;
+let typingInstance = null;
 
 // ── Entry Point ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   initScrollProgress();
   initNavbar();
-  initTypingEffect();
   await loadPortfolioData();
+  initTypingEffect();
   initScrollReveal();
 });
 
@@ -57,7 +57,13 @@ function renderAll() {
   const d = portfolioData;
   if (!d) return;
 
-  renderHero(d.personal);
+  // Update typed strings from JSON if provided
+  if (d.hero?.typedStrings?.length) {
+    TYPED_STRINGS.length = 0;
+    d.hero.typedStrings.forEach(s => TYPED_STRINGS.push(s));
+  }
+
+  renderHero(d.personal, d.hero);
   renderAbout(d.personal, d.skills);
   renderExperience(d.experience);
   renderSkills(d.skills);
@@ -69,11 +75,22 @@ function renderAll() {
 }
 
 // ── Hero ────────────────────────────────────────────────────
-function renderHero(p) {
+function renderHero(p, hero) {
   if (!p) return;
 
   setInnerHTML('hero-name', p.name);
   setInnerHTML('hero-desc', p.bio || p.tagline);
+
+  // Render dynamic stats from JSON
+  const statsEl = document.getElementById('hero-stats');
+  if (statsEl && hero?.stats?.length) {
+    statsEl.innerHTML = hero.stats.map(s => `
+      <div class="stat">
+        <div class="stat-number">${s.number}</div>
+        <div class="stat-label">${s.label}</div>
+      </div>
+    `).join('');
+  }
 
   // Avatar
   const avatarEl = document.getElementById('hero-avatar');
@@ -301,7 +318,8 @@ function initTypingEffect() {
   let strIdx = 0, charIdx = 0, deleting = false;
 
   function tick() {
-    const str = TYPED_STRINGS[strIdx];
+    const str = TYPED_STRINGS[strIdx % TYPED_STRINGS.length];
+    if (!str) return;
     if (!deleting) {
       el.textContent = str.slice(0, ++charIdx);
       if (charIdx === str.length) { deleting = true; setTimeout(tick, 2200); return; }

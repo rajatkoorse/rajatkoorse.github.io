@@ -65,6 +65,7 @@ async function init() {
   await loadPortfolioData();
   await loadNotesIndex();
   updateDashboard();
+  renderHeroForm();
   renderPersonalForm();
   renderExperienceList();
   renderSkillsList();
@@ -195,6 +196,7 @@ async function publishChanges() {
 }
 
 function collectAllFormData() {
+  collectHero();
   collectPersonal();
   collectExperience();
   collectSkills();
@@ -215,9 +217,9 @@ function showSection(name) {
   if (nav) nav.classList.add('active');
 
   const titles = {
-    dashboard: 'Dashboard', personal: 'Personal Info', experience: 'Work Experience',
-    skills: 'Technical Skills', projects: 'Projects', education: 'Education',
-    certifications: 'Certifications', achievements: 'Achievements',
+    dashboard: 'Dashboard', hero: 'Hero / Stats', personal: 'Personal Info',
+    experience: 'Work Experience', skills: 'Technical Skills', projects: 'Projects',
+    education: 'Education', certifications: 'Certifications', achievements: 'Achievements',
     notes: 'Manage Notes', settings: 'GitHub Settings',
   };
   document.getElementById('topbar-title').textContent = titles[name] || name;
@@ -234,6 +236,69 @@ function updateDashboard() {
   document.getElementById('dash-edu').textContent = portfolioData.education?.length || 0;
   document.getElementById('dash-cert').textContent = portfolioData.certifications?.length || 0;
   document.getElementById('dash-notes').textContent = notesIndex?.notes?.length || 0;
+}
+
+// ── Hero Section ───────────────────────────────────────────
+function renderHeroForm() {
+  const hero = portfolioData?.hero || {};
+
+  // Typed strings
+  const typedEl = document.getElementById('hero-typed');
+  if (typedEl && hero.typedStrings) {
+    typedEl.value = hero.typedStrings.join('\n');
+  }
+
+  // Stats
+  renderHeroStatsList(hero.stats || []);
+}
+
+function renderHeroStatsList(stats) {
+  const container = document.getElementById('hero-stats-list');
+  if (!container) return;
+  container.innerHTML = stats.map((s, i) => `
+    <div style="background:rgba(0,0,0,0.2); border:1px solid var(--border); border-radius:8px; padding:16px; position:relative;">
+      <button class="btn btn-danger btn-icon btn-sm" style="position:absolute; top:10px; right:10px;" onclick="removeHeroStat(${i})"><i class="fas fa-times"></i></button>
+      <div class="field" style="margin-bottom:10px;"><label>Number / Value</label><input type="text" id="hstat-${i}-num" value="${s.number || ''}" placeholder="2.5+" /></div>
+      <div class="field"><label>Label</label><input type="text" id="hstat-${i}-label" value="${s.label || ''}" placeholder="Years Exp." /></div>
+    </div>
+  `).join('');
+}
+
+function addHeroStat() {
+  if (!portfolioData.hero) portfolioData.hero = { typedStrings: [], stats: [] };
+  if (!portfolioData.hero.stats) portfolioData.hero.stats = [];
+  portfolioData.hero.stats.push({ number: '', label: '' });
+  renderHeroStatsList(portfolioData.hero.stats);
+}
+
+function removeHeroStat(i) {
+  portfolioData.hero.stats.splice(i, 1);
+  renderHeroStatsList(portfolioData.hero.stats);
+}
+
+function saveHero() {
+  collectHero();
+  toast('Hero config saved locally. Click Publish to go live.', 'success');
+}
+
+function collectHero() {
+  if (!portfolioData.hero) portfolioData.hero = {};
+
+  // Typed strings
+  const typedVal = (document.getElementById('hero-typed')?.value || '').trim();
+  portfolioData.hero.typedStrings = typedVal
+    .split('\n')
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  // Stats
+  const count = document.getElementById('hero-stats-list')?.children.length || 0;
+  portfolioData.hero.stats = [];
+  for (let i = 0; i < count; i++) {
+    const num = getVal(`hstat-${i}-num`);
+    const label = getVal(`hstat-${i}-label`);
+    if (num || label) portfolioData.hero.stats.push({ number: num, label });
+  }
 }
 
 // ── Personal Form ────────────────────────────────────────────
