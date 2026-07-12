@@ -4,6 +4,8 @@
  */
 'use strict';
 
+const DATA_URL = 'data/portfolio.json';
+
 // ── Constants (defaults — overridden by portfolio.json) ────
 let TYPED_STRINGS = [
   'AI-ML Engineer',
